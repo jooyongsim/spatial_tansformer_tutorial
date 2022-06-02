@@ -14,3 +14,12 @@ Source: https://github.com/pytorch/tutorials/blob/master/advanced_source/neural_
   <img src="spatial_transformer.png"/>
 </div>
 <br>
+
+## Result
+The network learns how to transform the input
+
+
+<div align="center">
+  <img src="spatial_transformer_result.png"/>
+</div>
+<br>
