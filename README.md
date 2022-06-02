@@ -2,7 +2,7 @@
 
 This is a tutorial for spatial transformer in Sookmyung Wonmen's Univ's Deep Learning Course 2022 with Prof. Joo Yong Sim
 
-Spatial transformer was from [Google Deepmind](https://arxiv.org/pdf/1506.02025.pdf)
+Spatial transformer was published by Google Deepmind: [Paper Link](https://arxiv.org/pdf/1506.02025.pdf)
 ```
 Source: https://github.com/pytorch/tutorials/blob/master/advanced_source/neural_style_tutorial.py
 ```
