@@ -73,8 +73,7 @@ class Net(nn.Module):
         x = x.reshape(-1,320)
         x = self.fc1_drop(self.fc1(x))
         x = self.fc2(x)
-        return x
-
+        return x # F.log_softmax(x, dim=1)
 
 device = torch.device('cuda')
 model = Net().to(device)
@@ -88,11 +87,12 @@ def train(epoch):
         X, y = X.to(device), y.to(device)
         output = model(X)
         loss = loss_func(output, y)
+        #  loss = F.nll_loss(output, y)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
         if step%100 == 0:
-            print(f'Train Epoch: {epoch} [{step*len(X)}/{len(train_loader.dataset)} \
+            print(f'Train Epoch: {epoch} [{step*len(X):5d}/{len(train_loader.dataset)} \
             Loss: {loss.item():.6f}')
 def test():
     with torch.no_grad():
@@ -103,11 +103,13 @@ def test():
             X, y = X.to(device), y.to(device)
             output = model(X)
             test_loss += loss_func(output, y).item()
+            # test_loss += F.nll_loss(output, y, size_average=False).item()
+
             pred = torch.argmax(output, dim=1)
             correct += pred.eq(y).sum().item()
         test_loss /= len(test_loader.dataset)
-        print(f'Test set: Avg loss is {test_loss:.4f}, Accuracy is {correct} \
-        /{len(test_loader.dataset)} ({100.*correct / len(test_loader.dataset):.0f}]%')
+        print(f'Test set: Avg loss is {test_loss:.4f}, Accuracy is {correct:5d\
+            } /{len(test_loader.dataset)} ({100.*correct / len(test_loader.dataset):.0f}%')
 
 for epoch in range(1, 21):
     train(epoch)
