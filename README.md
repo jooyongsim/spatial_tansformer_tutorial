@@ -7,7 +7,7 @@ Spatial transformer was published by Google Deepmind: [Paper Link](https://arxiv
 Source: https://github.com/pytorch/tutorials/blob/master/advanced_source/neural_style_tutorial.py
 ```
 
-## Question: Can we learn how to augment in your network?
+## Question: Can we learn how to augment in our network?
 - Learn geometric invariance of the model (translation, crop, scale, shear, … etc)
 - Visual attention mechanism
 
